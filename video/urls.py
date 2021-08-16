@@ -1,5 +1,7 @@
 from django.urls import path
 
+from . import views
+
 urlpatterns = [
-	# put urls here
+	path('',views.Feed.as_view(),name='feed'),
 ]

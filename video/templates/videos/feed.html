@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {%for video in videos%}
+    <h2>{{video.title}}</h2>
+<form action="{%url 'comment_create' video.pk%}" method="post">
+{% csrf_token %}
+<label for="comment-content">write your comment</label>
+<input type="text" name="content" id ="comment-content">
+<input type="submit" value="add comment">
+</form>
+
+    <h4>Comments</h4>
+    <ul>
+    {%for comment in video.comments.all%}
+    <li>{{comment.content}}</li>
+    {%empty%}
+    <li>No Comment</li>
+    {%endfor%}
+    </ul>
+    {%empty%}
+    <h2>No Videos :(</h2>
+    {%endfor%}
+</body>
+</html>

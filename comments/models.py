@@ -11,3 +11,4 @@ class Comment(Model):
 
     def __str__(self):
         return f"{self.pk} - {self.video.title}"
+#f12 will take to the view class
